@@ -1,6 +1,9 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UsuarioModelo } from 'src/app/modelos/Usuario.modelo';
+import { SeguridadService } from 'src/app/servicios/seguridad.service';
+import * as crypto from 'crypto-js';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -10,7 +13,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class IniciarSesionComponent implements OnInit {
   //fgValidador: FormGroup= this.fb.group({});
   fgValidador = new FormGroup({});
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private servicioSeguridad: SeguridadService) { }
 
   
   
@@ -30,6 +35,17 @@ export class IniciarSesionComponent implements OnInit {
   IdentificarUsuario(){
     let user =  this.ObtenerFgv['email'].value;
     let password = this.ObtenerFgv['password'].value;
+    let modelo = new UsuarioModelo();
+    modelo.username = user;
+    modelo.clave = crypto.MD5(password).toString();
+    this.servicioSeguridad.IdentificarUsuario(modelo).subscribe(
+      (data: UsuarioModelo)=>{
+        this.servicioSeguridad.GuardarDatosEnLocal(data);
+        //alert("Datos correctos.."+user+' '+password);
+      },(error: any)=>{
+        alert("Datos incorrectos.."+user+' '+password);
+      }
+    );
   }
 
 }
