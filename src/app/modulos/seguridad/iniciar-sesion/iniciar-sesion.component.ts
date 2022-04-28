@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioModelo } from 'src/app/modelos/Usuario.modelo';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
 import * as crypto from 'crypto-js';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -15,7 +16,8 @@ export class IniciarSesionComponent implements OnInit {
   fgValidador = new FormGroup({});
   constructor(
     private fb: FormBuilder,
-    private servicioSeguridad: SeguridadService) { }
+    private servicioSeguridad: SeguridadService,
+    private router: Router) { }
 
   
   
@@ -41,7 +43,7 @@ export class IniciarSesionComponent implements OnInit {
     this.servicioSeguridad.IdentificarUsuario(modelo).subscribe(
       (data: UsuarioModelo)=>{
         this.servicioSeguridad.GuardarDatosEnLocal(data);
-        //alert("Datos correctos.."+user+' '+password);
+        this.router.navigate(["/"]);
       },(error: any)=>{
         alert("Datos incorrectos.."+user+' '+password);
       }

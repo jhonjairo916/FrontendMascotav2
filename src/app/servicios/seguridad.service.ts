@@ -9,10 +9,11 @@ import {DatosGenerales} from '../config/datos.generales';
 })
 export class SeguridadService {
   url: String = DatosGenerales.urlBackend;
+  
   //Check the behavior of a variable
   datosUsuarioSession = new BehaviorSubject<UsuarioModelo>(new UsuarioModelo());
   constructor(
-    private http: HttpClient//It allows invoke the backend
+    private http: HttpClient,//It allows invoke the backend
     ) { 
       this.VerificarDatosSession();
     }
@@ -28,6 +29,16 @@ export class SeguridadService {
     let datos = localStorage.getItem("sessionData");
     return datos;
   }
+  ObtenerToken(){
+    let datosLocales = this.ObtenerDatosLocalStorage();
+    if(datosLocales){
+      let objeto:UsuarioModelo= JSON.parse(datosLocales);
+      return objeto.token;
+    }
+    return "";
+  
+  }
+
   RefrescarDatosSession(usuario: UsuarioModelo){
     this.datosUsuarioSession.next(usuario);
   }
@@ -64,4 +75,11 @@ export class SeguridadService {
     }
     
   }
+
+  CerrarSession(){
+    localStorage.removeItem("sessionData");
+    //The Object UsuarioModelo is reseted 
+    this.RefrescarDatosSession(new UsuarioModelo());
+  }
+  
 }
