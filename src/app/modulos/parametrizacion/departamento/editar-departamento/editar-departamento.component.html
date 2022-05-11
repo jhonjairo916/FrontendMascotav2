@@ -1,1 +1,32 @@
-<p>editar-departamento works!</p>
+<div class="row">
+    <fieldset>
+        <legend>Editar departamento</legend>
+        <form [formGroup]="fgValidador" (ngSubmit)="ActualizarDepartamento()" class="col s6">
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="hidden" formControlName="id" id="id">
+                <input formControlName="nombre"  id="nombre" type="text" class="validate">
+                <label class="active" for="name">nombre</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <button  class="waves-effect waves-light btn" >
+                    <i class="material-icons right">update</i>Actualizar
+                </button>
+                &nbsp;
+                <a class="waves-effect red waves-light btn"><i class="material-icons right">cancel</i>Cancelar</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <ul>
+                    <li ><a  class="waves-effect waves-light btn" routerLink="/parametros/listar-departamento"><i class="material-icons left">add</i>Listar departamento</a></li>
+                </ul>
+                
+            </div>
+        </div>
+        </form>
+    </fieldset>
+  </div>
+

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DepartamentoModelo } from 'src/app/modelos/Departamento.modelo';
 import { DepartamentoService } from 'src/app/servicios/departamento.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crear-departamento',
@@ -32,11 +33,21 @@ export class CrearDepartamentoComponent implements OnInit {
     let nombre = this.ObtenerFGV['nombre'].value;
     this.departamento.nombre = nombre;
     this.servicioDepartamento.GuardarDepartamento(this.departamento).subscribe((data)=>{
-      alert(`Registration of ${data.nombre} recorded succesfully` );
+     // alert(`Registration of ${data.nombre} recorded succesfully` );
+      Swal.fire(
+        `Registration of ${data.nombre} recorded succesfully`,
+        'Vover a cargar el listado?',
+        'success'
+      )
       this.router.navigate(['parametros/listar-departamento'])  
     },
     (error:any)=>{
-      console.log("Error saving departamento",error)
+      //alert("Error saving departamento"+error.message)
+      Swal.fire(
+        'there was an error registering the departamento',
+        'Try it again?',
+        'question'
+      )
     })
   }
   

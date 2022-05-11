@@ -1,4 +1,4 @@
 export class DepartamentoModelo{
-    id?:number;
+    id:number=0;
     nombre?:string;
 }

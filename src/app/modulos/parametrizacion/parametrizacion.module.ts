@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {NgxPaginationModule} from 'ngx-pagination'; 
+
 
 import { ParametrizacionRoutingModule } from './parametrizacion-routing.module';
 import { CrearVacunaComponent } from './vacuna/crear-vacuna/crear-vacuna.component';
@@ -50,7 +52,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ParametrizacionRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class ParametrizacionModule { }

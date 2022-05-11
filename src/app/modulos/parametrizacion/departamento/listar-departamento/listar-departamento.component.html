@@ -1,1 +1,33 @@
-<p>listar-departamento works!</p>
+<ul>
+    <li ><a class="waves-effect waves-light btn" routerLink="/parametros/crear-departamento"><i class="material-icons left">add</i>Crear departamento</a></li>
+</ul>
+<div class="row">
+    <div class="col s6">
+        <table class="striped">
+            <thead>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let list of listaDepartamentos | paginate: { itemsPerPage: 4, currentPage: pagina }">
+                    <td>{{list.id}}</td>
+                    <td>{{list.nombre}}</td>
+                    <td><a routerLink="/parametros/editar-departamento/{{list.id}}" class="waves-effect orange waves-light btn"><i class="material-icons left">edit</i>Editar</a></td>
+                    
+                    <td><button  class="red waves-light btn" (click)="VerificarEliminacion(list.id)" >
+                        <i class="material-icons left" >delete</i>Eliminar
+                    </button></td>
+                </tr>
+                <tr>
+                    <td><pagination-controls (pageChange)="pagina = $event"></pagination-controls></td>
+                </tr>
+                
+            </tbody>
+        </table>
+        
+    </div>
+</div>    
+
+
