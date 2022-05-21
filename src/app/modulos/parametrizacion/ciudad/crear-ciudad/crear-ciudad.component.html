@@ -1,1 +1,37 @@
-<p>crear-ciudad works!</p>
+<div class="row">
+    <fieldset>
+        <legend>Crear Ciudad</legend>
+        <form [formGroup]="fgValidador" (ngSubmit)="GuardarCiudad()" class="col s6">
+        <div class="row">
+            <div class="input-field col s12">
+                <input formControlName="nombre"  id="name" type="text" class="validate">
+                <label for="name">nombre</label>
+            </div>
+        </div>
+        <div class="row">
+                <label for="departamentoId">Seleccione Departamento</label>
+                <select formControlName="departamentoId" id="departamentoId" class="browser-default">
+                    <option  *ngFor="let list of dptoListado"  value ="{{list.id}}">{{list.nombre}}</option>
+                </select>
+            
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <button  class="waves-effect waves-light btn" [disabled]="ObtenerFGV['nombre'].errors ">
+                    <i class="material-icons right">save</i>Guardar
+                </button>
+                &nbsp;
+                <a class="waves-effect red waves-light btn"><i class="material-icons right">cancel</i>Cancelar</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <ul>
+                    <li ><a  class="waves-effect waves-light btn" routerLink="/parametros/listar-ciudad"><i class="material-icons left">add</i>Listar Ciudades</a></li>
+                </ul>
+                
+            </div>
+        </div>
+        </form>
+    </fieldset>
+  </div>

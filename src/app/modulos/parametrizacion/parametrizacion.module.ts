@@ -24,6 +24,7 @@ import { EditarRazaComponent } from './raza/editar-raza/editar-raza.component';
 import { ListarRazaComponent } from './raza/listar-raza/listar-raza.component';
 import { EliminarRazaComponent } from './raza/eliminar-raza/eliminar-raza.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListarCiudadComponent } from './ciudad/listar-ciudad/listar-ciudad.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CrearRazaComponent,
     EditarRazaComponent,
     ListarRazaComponent,
-    EliminarRazaComponent
+    EliminarRazaComponent,
+    ListarCiudadComponent
   ],
   imports: [
     CommonModule,

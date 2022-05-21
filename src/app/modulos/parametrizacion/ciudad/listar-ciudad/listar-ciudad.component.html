@@ -1,20 +1,22 @@
 <ul>
-    <li ><a class="waves-effect waves-light btn" routerLink="/parametros/crear-departamento"><i class="material-icons left">add</i>Crear departamento</a></li>
+    <li ><a class="waves-effect waves-light btn" routerLink="/parametros/crear-ciudad"><i class="material-icons left">add</i>Crear ciudad</a></li>
 </ul>
 <div class="row">
-    <div class="col s6">
+    <div class="col s7">
         <table class="striped">
             <thead>
                 <th>Id</th>
                 <th>Nombre</th>
+                <th>Departamento</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </thead>
             <tbody>
-                <tr *ngFor="let list of listaDepartamentos | paginate: { itemsPerPage: 4, currentPage: pagina }">
+                <tr *ngFor="let list of listaCiudades | paginate: { itemsPerPage: 4, currentPage: pagina }">
                     <td>{{list.id}}</td>
                     <td>{{list.nombre}}</td>
-                    <td><a routerLink="/parametros/editar-departamento/{{list.id}}" class="waves-effect orange waves-light btn"><i class="material-icons left">edit</i>Editar</a></td>
+                    <td>{{list.departamentoId}}</td>
+                    <td><a routerLink="/parametros/editar-ciudad/{{list.id}}" class="waves-effect orange waves-light btn"><i class="material-icons left">edit</i>Editar</a></td>
                     
                     <td><button  class="red waves-light btn" (click)="VerificarEliminacion(list.id)" >
                         <i class="material-icons left">delete</i>Eliminar

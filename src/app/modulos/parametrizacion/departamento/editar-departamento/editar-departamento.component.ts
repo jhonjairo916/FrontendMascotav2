@@ -14,7 +14,6 @@ export class EditarDepartamentoComponent implements OnInit {
   fgValidador = new FormGroup({});
    departamentoModelo = new DepartamentoModelo();
    id: number=0;
-   nombreViejo:string=""
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,//it allow to acced to url data
