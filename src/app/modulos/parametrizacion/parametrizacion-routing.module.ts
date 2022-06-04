@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { VerificadorSesionGuard } from 'src/app/guardianes/verificador-sesion.guard';
 import { CrearCiudadComponent } from './ciudad/crear-ciudad/crear-ciudad.component';
 import { EditarCiudadComponent } from './ciudad/editar-ciudad/editar-ciudad.component';
 import { ListarCiudadComponent } from './ciudad/listar-ciudad/listar-ciudad.component';

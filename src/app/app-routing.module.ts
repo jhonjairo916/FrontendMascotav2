@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { VerificadorSesionGuard } from './guardianes/verificador-sesion.guard';
 import { Error404Component } from './publico/errores/error404/error404.component';
 import { InicioComponent } from './publico/inicio/inicio.component';
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   {
     path:'parametros',
     
-    loadChildren:() =>import('./modulos/parametrizacion/parametrizacion.module').then(m => m.ParametrizacionModule)
+    loadChildren:() =>import('./modulos/parametrizacion/parametrizacion.module').then(m => m.ParametrizacionModule),
+    canActivate: [VerificadorSesionGuard]
   },
   {
     path:'seguridad',

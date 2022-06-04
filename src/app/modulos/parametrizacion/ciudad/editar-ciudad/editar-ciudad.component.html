@@ -9,11 +9,17 @@
                 <label for="name" class="active">nombre</label>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="input-field col s12">
                 <input formControlName="departamentoId"  id="departamentoId" type="text" class="validate">
                 <label for="name" class="active">Id departamento</label>
             </div>
+        </div> -->
+        <div class="row">
+            <label for="departamentoId">Seleccione Departamento</label>
+            <select formControlName="departamentoId" id="departamentoId" class="browser-default">
+                <option *ngFor="let list of dptoListado"  value ="{{list.id}}" >{{list.nombre}}</option>
+            </select>
         </div>
         <div class="row">
             <div class="col s12">

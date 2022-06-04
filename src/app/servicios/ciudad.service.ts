@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CiudadModelo } from '../modelos/Ciudad.modelo';
+import { CiudadSinDptoModelo } from '../modelos/CiudadSinDepto.modelo';
 import {DatosGenerales} from '../config/datos.generales'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SeguridadService } from './seguridad.service';
@@ -21,7 +22,7 @@ export class CiudadService {
     }
 
   LitarCiudad():Observable<CiudadModelo[]>{
-    return this.http.get<CiudadModelo[]>(`${this.url}/ciudades`,{
+    return this.http.get<CiudadModelo[]>(`${this.url}/ciudades/?filter={"include":["departamento"]}`,{
       headers: new HttpHeaders({
         'Authorization':`Bearer ${this.token}`
       })
@@ -39,9 +40,10 @@ export class CiudadService {
     })
     
   }
-  ActualizarCiudad(ciudad: CiudadModelo):Observable<CiudadModelo>{
+  ActualizarCiudad(ciudad: CiudadSinDptoModelo):Observable<CiudadSinDptoModelo>{
     //alert("Esta es la ciudad "+ciudad.id)
-    return this.http.put<CiudadModelo>(`${this.url}/ciudades/${ciudad.id}`,ciudad,{
+    
+    return this.http.put<CiudadSinDptoModelo>(`${this.url}/ciudades/${ciudad.id}`,ciudad,{
       headers: new HttpHeaders({
         'Authorization': `Bearer ${this.token}`
       })
@@ -61,13 +63,6 @@ export class CiudadService {
       })
     })
   }
-  //TODO
-  //Replace the id of the departamento with the name
-  ObtenerNombreDepartamento(id:number):Observable<any>{
-    return this.http.get<any>(`${this.url}/ciudads/${id}/departamento`,{
-      headers: new HttpHeaders({
-        'Authorization':`Bearer ${this.token}`
-      })
-    })
-  }
+
+ 
 }

@@ -19,7 +19,7 @@ export class ListarCiudadComponent implements OnInit {
   ngOnInit(): void {
     this.ListarCiudad()
   }
-
+  
   ListarCiudad()
   {
      this.servicioCiudad.LitarCiudad().subscribe(

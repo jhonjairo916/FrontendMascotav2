@@ -15,7 +15,7 @@
                 <tr *ngFor="let list of listaCiudades | paginate: { itemsPerPage: 4, currentPage: pagina }">
                     <td>{{list.id}}</td>
                     <td>{{list.nombre}}</td>
-                    <td>{{list.departamentoId}}</td>
+                    <td>{{list.departamento.nombre}}</td>
                     <td><a routerLink="/parametros/editar-ciudad/{{list.id}}" class="waves-effect orange waves-light btn"><i class="material-icons left">edit</i>Editar</a></td>
                     
                     <td><button  class="red waves-light btn" (click)="VerificarEliminacion(list.id)" >
